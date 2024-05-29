@@ -1,9 +1,13 @@
-#include <stdio.h>
+#include "./code/scenes/menu.h"
+#include "./code/scenes/gameplay.h"
+#include "./code/scenes/gameover.h"
 
-int main(void) {
-    printf("HelloWorld!\n");
 
-    while(1) {
-    }
-    return 0;
+int main() {
+	while(1) {
+		menu();
+		gameplay();
+		gameover();
+	}
+	return 0;
 }

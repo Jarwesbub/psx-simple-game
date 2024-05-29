@@ -1,4 +1,4 @@
-TARGET = simple-game
+TARGET = psx-simple-game
 TYPE = ps-exe
 
 SRCS = \

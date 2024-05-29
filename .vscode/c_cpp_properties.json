@@ -31,7 +31,10 @@
         "/usr/local/mipsel-none-elf/include",
         "${workspaceFolder}/",
         "${workspaceFolder}/third_party/nugget",
-        "${workspaceFolder}/third_party/psyq-iwyu/include"
+        "${workspaceFolder}/third_party/psyq-iwyu/include",
+        "${workspaceFolder}/imagekit",
+        "${workspaceFolder}/code",
+        "${workspaceFolder}/sounds"
       ],
       "intelliSenseMode": "gcc-x86"
     }
