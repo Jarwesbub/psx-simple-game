@@ -2,11 +2,12 @@
 #include "../sound.h"
 #include "../../sounds/gameplay_theme.h"
 
-Image player;
+typedef struct {
+	int x, y, speed;
+	Image sprite;
+} Player;
 
-int x = 120;
-int y = 100;
-int speed = 2;
+Player player;
 
 int gameplay() {
 	short isActive = 1;
@@ -32,38 +33,41 @@ void initialize() {
 	audioTransferVagToSPU(&gameplay_theme, gameplay_theme_size, SPU_0CH);
 	audioPlay(SPU_0CH);
 
-	player = createImage(img_crash, x, y);
+	player.x = 120;
+	player.y = 100;
+	player.speed = 2;
+	player.sprite = createImage(img_crash, player.x, player.y);
 }
 
 int update() {
 	padUpdate();
-	if(padCheckPressed(PADselect) && padCheck(PADstart)) {
+	if(padCheck(PADselect)) {
         return 0;
     }
 
-	else if(padCheck(Pad1Up)) {
-		y -= speed;
-		player = moveImage(player, x, y);
+	if(padCheck(Pad1Up)) {
+		player.y -= player.speed;
+		player.sprite = moveImage(player.sprite, player.x, player.y);
 	}
 
-	else if(padCheck(Pad1Down)) {
-		y += speed;
-		player = moveImage(player, x, y);
+	if(padCheck(Pad1Down)) {
+		player.y += player.speed;
+		player.sprite = moveImage(player.sprite, player.x, player.y);
 	}
 
-	else if(padCheck(Pad1Left)) {
-		x -= speed;
-		player = moveImage(player, x, y);
+	if(padCheck(Pad1Left)) {
+		player.x -= player.speed;
+		player.sprite = moveImage(player.sprite, player.x, player.y);
 	}
 
-	else if(padCheck(Pad1Right)) {
-		x += speed;
-		player = moveImage(player, x, y);
+	if(padCheck(Pad1Right)) {
+		player.x += player.speed;
+		player.sprite = moveImage(player.sprite, player.x, player.y);
 	}
 
 	return 1;
 }
 
 void draw() {
-	drawImage(player);
+	drawImage(player.sprite);
 }

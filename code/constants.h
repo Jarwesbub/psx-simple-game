@@ -236,9 +236,9 @@ void initializeScreen() {
 	initializeOrderingTable();
 }
 
-void initializeDebugFont() {
+void initializeDebugFont(int x, int y) {
 	FntLoad(960, 256);
-	SetDumpFnt(FntOpen(105, 50, 320, 240, 0, 512)); //Sets the dumped font for use with FntPrint();
+	SetDumpFnt(FntOpen(x, y, 320, 240, 0, 512)); //Sets the dumped font for use with FntPrint();
 }
 
 void initializeOrderingTable(){

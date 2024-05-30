@@ -1,7 +1,7 @@
 #include "../constants.h"
 
 int gameover() {
-	short waitTime = 180;
+	short waitTime = 180; // How many frames to wait
 	endInitialize();
 
 	while(waitTime) {
@@ -18,6 +18,6 @@ int gameover() {
 
 void endInitialize() {
 	initializeScreen();
-	initializeDebugFont();
+	initializeDebugFont(120, 50);
 	setBackgroundColor(createColor(0, 0, 0));
 }

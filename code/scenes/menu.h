@@ -1,10 +1,9 @@
 #include "../constants.h"
 #include <stdio.h>
 
-Image pressStart;
+Image menuPressStart;
 
 int menu() {
-	printf("MENU OPEN \n");
 	short isMenuActive = 1;
 	int coolDown = 0;
 	menuInitialize();
@@ -19,19 +18,16 @@ int menu() {
 		clearDisplay();
 		menuDraw();
 		display();
-	}
-	clearDisplay();
-	clearVRAM();
-    return 1;
+	}    return 1;
 }
 
 void menuInitialize() {
 	initializeScreen();
-	initializeDebugFont();
+	initializeDebugFont(120, 50); //120, 50
 	setBackgroundColor(createColor(0, 0, 0));
 	initializePad();
 
-	pressStart = createImage(img_press_start, 120, 100);
+	menuPressStart = createImage(img_press_start, 100, 100);
 }
 
 int readPADstartInput() {
@@ -44,5 +40,5 @@ int readPADstartInput() {
 
 void menuDraw() {
 	FntPrint("The Game");
-	drawImage(pressStart);
+	drawImage(menuPressStart);
 }
